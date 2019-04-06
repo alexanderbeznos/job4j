@@ -7,7 +7,7 @@ package ru.job4j.calculate;
  */
 public class Calculate {
 	/**
-	*Main.
+	 *Main.
 	*@param args - args.
 	*/
 	public static void main(String[] args) {
