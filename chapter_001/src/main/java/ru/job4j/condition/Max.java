@@ -14,7 +14,7 @@ public class Max {
      *
      * @param left  первое значение.
      * @param right второе значение.
-     *              return result ответ.
+     * return result ответ.
      */
     public int max(int left, int right) {
         int result = left > right ? left : right;
