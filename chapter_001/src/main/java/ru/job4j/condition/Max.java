@@ -4,7 +4,7 @@ package ru.job4j.condition;
  * Максимум из двух чисел.
  *
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 14.04.2019.
  */
 
@@ -17,7 +17,6 @@ public class Max {
      * return result ответ.
      */
     public int max(int left, int right) {
-        int result = left > right ? left : right;
-        return result;
+        return left > right ? left : right;
     }
 }
