@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 14.04.2019.
  */
 public class DummyBotTest {
@@ -27,4 +27,12 @@ public class DummyBotTest {
         DummyBot bot = new DummyBot();
         assertThat(bot.answer("Сколько будет 2 + 2?"), is("Это ставит меня в тупик. Задайте другой вопрос."));
             }
+    /**
+     * Test "Привет, Бот.".
+     */
+    @Test
+    public void whenHelloBot() {
+        DummyBot bot = new DummyBot();
+        assertThat(bot.answer("Привет, Бот."), is("Привет, умник."));
+    }
 }
