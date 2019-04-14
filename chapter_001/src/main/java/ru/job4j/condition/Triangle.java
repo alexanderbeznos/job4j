@@ -56,7 +56,7 @@ public class Triangle {
      * @return false
      */
     private boolean exist(double a, double c, double b) {
-        if (a + b <= c || a + c <= b || b + c <= a) {
+        if (a + b >= c || a + c >= b || b + c >= a) {
             rsl = Math.sqrt(p * (p - a) * (p - b) * (p - c));
               }
         return false;
