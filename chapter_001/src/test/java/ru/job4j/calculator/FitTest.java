@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Test.
- * @author Alexander Beznos (ast1bn@mail.ru).,.m
+ * @author Alexander Beznos (ast1bn@mail.ru).
  * @version 1.0
  * @since 13.04.2019.
  */
