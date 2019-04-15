@@ -38,7 +38,7 @@ public class MultiMaxTest {
     public void whenThirdMax() {
         MultiMax check = new MultiMax();
         int result = check.max(3, 7, 8);
-        assertThat(result, is(4));
+        assertThat(result, is(8));
     }
     /**
      * Test 1=2=3.

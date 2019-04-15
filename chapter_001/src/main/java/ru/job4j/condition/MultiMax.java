@@ -20,7 +20,7 @@ public class MultiMax {
     public int max(int first, int second, int third) {
         int result = first;
         result = first > second ? first : second;
-        result = result > third ? first : third;
+        result = result > third ? result : third;
         return result;
     }
 }
