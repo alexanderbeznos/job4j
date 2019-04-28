@@ -7,8 +7,8 @@ import static org.junit.Assert.assertThat;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
- * @since 27.04.2019.
+ * @version 1.1.
+ * @since 28.04.2019.
  */
 
 public class FindLoopTest {
@@ -44,6 +44,13 @@ public class FindLoopTest {
         FindLoop find = new FindLoop();
         int result = find.indexOf(new int[] {5, 10, 3, 41, 27, 92, 2}, 27);
         int expect = 4;
+        assertThat(result, is(expect));
+    }
+    @Test
+    public void whenArrayHas5Thenno() {
+        FindLoop find = new FindLoop();
+        int result = find.indexOf(new int[] {5, 10, 3, 41, 27, 92, 2}, 11);
+        int expect = -1;
         assertThat(result, is(expect));
     }
 }
