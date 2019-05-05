@@ -1,7 +1,6 @@
 package ru.job4j.array;
 
 import java.util.Arrays;
-
 /**
  * Удаление дубликатов в массиве.
  * @author Alexander Beznos (ast1bn@mail.ru).

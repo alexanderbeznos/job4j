@@ -5,7 +5,6 @@ package ru.job4j.array;
  * @version 1.0.
  * @since 27.04.2019.
  */
-
 public class FindLoop {
     /**
      * вычичление.
@@ -13,7 +12,6 @@ public class FindLoop {
      * @param el искомый элемент.
      * @return возврат искомого элемента.
      */
-
     public int indexOf(int[] date, int el) {
         int rst = -1;
         for (int index = 0; index != date.length; index++) {
