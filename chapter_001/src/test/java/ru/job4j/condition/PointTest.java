@@ -43,6 +43,16 @@ public class PointTest {
         Point second = new Point(2, 2);
         second.info();
     }
-
+    /**
+     * Test from coordinate to distance 1,0,4,0,8,0.
+     */
+    @Test
+    public void whenZeroAnd3() {
+        Point first = new Point(0, 0, 0);
+        Point second = new Point(1, 4, 8);
+        double result = first.distance3d(second);
+        System.out.println(String.format("Result is %s", result));
+        assertThat(result, is(9d));
+    }
 }
 
