@@ -39,5 +39,18 @@ public class MaxTest {
         Max max = new Max();
         int result = max.max(5, 5);
         assertThat(result, is(5));
+
+    }
+    @Test
+    public void whenMax3() {
+        Max max = new Max();
+        int result = max.max(5, 6, 10);
+        assertThat(result, is(10));
+    }
+    @Test
+    public void whenMax4() {
+        Max max = new Max();
+        int result = max.max(5, 6, 10, 15);
+        assertThat(result, is(15));
     }
 }
