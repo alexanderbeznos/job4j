@@ -20,7 +20,27 @@ public class CalculatorTest {
         double result = calc.add(1D, 1D);
         double expected = 2D;
         assertThat(result, is(expected));
-            }
+    }
+    /**
+     * Test add.
+     */
+    @Test
+    public void whenAdd3() {
+        Calculator calc = new Calculator();
+        double result = calc.add(1D, 2D, 7D);
+        double expected = 10D;
+        assertThat(result, is(expected));
+    }
+    /**
+     * Test add.
+     */
+    @Test
+    public void whenAdd4() {
+        Calculator calc = new Calculator();
+        double result = calc.add(1D, 2D, 7D, 15);
+        double expected = 25D;
+        assertThat(result, is(expected));
+    }
     /**
      * Test subtract.
      */
