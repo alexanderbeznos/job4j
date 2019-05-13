@@ -20,11 +20,11 @@ public class Max {
         return left > right ? left : right;
     }
     public int max(int first, int second, int third) {
-        int tmp = max (second, third);
+        int tmp = max(second, third);
         return max(first, tmp);
     }
     public int max(int first, int second, int third, int fourth) {
-        int tmp = max (second, third, fourth);
+        int tmp = max(second, third, fourth);
         return max(first, tmp);
     }
 }
