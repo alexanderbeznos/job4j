@@ -4,8 +4,8 @@ import java.util.*;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
- * @since 19.05.2019.
+ * @version 1.1.
+ * @since 26.05.2019.
  */
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -48,18 +48,10 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        int p = 0;
-        for (int i = 0; i != items.length; i++) {
+        for (int i = 0; i != this.position; i++) {
             if (items[i].getId().equals(id)) {
-                for(int j = i + 1; j != items.length; j++) {
-                    if (items[j] != null) {
-                        p++;
-                    } else {
-                        break;
-                    }
-                }
-                System.arraycopy(items, i + 1, items, i, p);
-                items[i + p] = null;
+                System.arraycopy(items, i + 1, items, i, position - i);
+                items[position - 1] = null;
                 position--;
                 result = true;
                 break;
@@ -67,19 +59,13 @@ public class Tracker {
         }
         return result;
     }
-
     /**
      * Метод позволяющий найти все заявки.
      * @return возврат.
      */
     public Item[] findAll() {
-        Item[] result = new Item[this.position];
-        for(int index = 0; index != this.position; index++) {
-            result[index] = this.items[index];
-        }
-        return result;
+        return Arrays.copyOf(this.items, this.position);
     }
-
     /**
      * Метод позволябщий найти заявки по имени.
      * @param key передавать в метод.

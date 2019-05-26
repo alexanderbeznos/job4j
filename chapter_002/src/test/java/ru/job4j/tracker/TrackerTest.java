@@ -3,8 +3,8 @@ package ru.job4j.tracker;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
- * @since 19.05.2019.
+ * @version 1.1.
+ * @since 26.05.2019.
  */
 
 import org.junit.Test;
