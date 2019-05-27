@@ -4,8 +4,8 @@ import java.util.*;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.1.
- * @since 26.05.2019.
+ * @version 1.2.
+ * @since 27.05.2019.
  */
 public class Tracker {
     private final Item[] items = new Item[100];
@@ -74,24 +74,23 @@ public class Tracker {
     public Item[] findByName(String key) {
         Item[] step = new Item[100];
         int poz = 0;
-        for (int i = 0; i != items.length; i++) {
+        for (int i = 0; i != position; i++) {
             if (items[i] != null && items[i].getName().equals(key)) {
                 step[poz++] = items[i];
             }
         }
         return Arrays.copyOf(step, poz);
     }
-
     /**
      * Метод позволябщий найти заявки по id.
      * @param id передавать в метод.
      * @return возврат.
      */
-    protected Item findById(String id) {
+    public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (int i = 0; i != position; i++) {
+            if (items[i] != null && items[i].getId().equals(id)) {
+                result = items[i];
                 break;
             }
         }
