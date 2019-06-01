@@ -29,7 +29,7 @@ public class Tracker {
      * @param item входящая заявка, параметры которой надо записать вместо старой.
      * @return возврат.
      */
-    public boolean replace(String id, Item item){
+    public boolean replace(String id, Item item) {
         boolean repl = false;
         for (int i = 0; i != items.length; i++) {
             if (items[i].getId().equals(id)) {
