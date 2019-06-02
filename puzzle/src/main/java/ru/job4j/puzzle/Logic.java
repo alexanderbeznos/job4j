@@ -76,8 +76,8 @@ public class Logic {
                 if (table[horizontal][vertical] == 1) {
                     sumhorizontal = sumhorizontal + 1;
                 }
-                if (table[vertical][horizontal] == 1 ) {
-                    sumvertical = sumvertical +1;
+                if (table[vertical][horizontal] == 1) {
+                    sumvertical = sumvertical + 1;
                 }
             }
             if (sumhorizontal == table.length || sumvertical == table.length) {
