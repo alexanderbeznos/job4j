@@ -1,5 +1,10 @@
 package ru.job4j.tracker;
 
+/**
+ * @author Alexander Beznos (ast1bn@mail.ru).
+ * @version 1.1.
+ * @since 04.06.2019.
+ */
 public class StartUI {
     /**
      * Константа меню для добавления новой заявки.
@@ -116,9 +121,11 @@ public class StartUI {
         System.out.println("------------ Поиск по номеру заявки --------------");
         String id = this.input.ask("Введите номер заявки :");
         Item result = this.tracker.findById(id);
-        System.out.println("------------ Имя пользователя : " + result.getName() + "-----------");
-        System.out.println("------------ Описание заявки : " + result.getDecs() + "-----------");
-        System.out.println("------------ Время создания заявки : " + result.getTime() + "-----------");
+        if (result != null) {
+            System.out.println("------------ Имя пользователя : " + result.getName() + "-----------");
+            System.out.println("------------ Описание заявки : " + result.getDecs() + "-----------");
+            System.out.println("------------ Время создания заявки : " + result.getTime() + "-----------");
+        }
     }
     /**
      * Метод реализует нахождение заявки по имени.
