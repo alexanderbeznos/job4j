@@ -11,7 +11,6 @@ public class Tracker {
     private final Item[] items = new Item[100];
     private int position = 0;
     private static final Random RN = new Random();
-
     /**
      * Метод реализаущий добавление заявки в хранилище.
      * @param item новая заявка.
