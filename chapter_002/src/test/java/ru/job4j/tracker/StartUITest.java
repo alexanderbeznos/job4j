@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 04.06.2019.
  */
 
@@ -16,6 +16,21 @@ import java.io.PrintStream;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 public class StartUITest {
+    private final String menu = this.menus();
+    private String menus() {
+        StringBuilder screen = new StringBuilder();
+        screen.append("0. Add new Item").append(System.lineSeparator());
+        screen.append("1. Show all items").append(System.lineSeparator());
+        screen.append("2. Edit item").append(System.lineSeparator());
+        screen.append("3. Delete item").append(System.lineSeparator());
+        screen.append("4. Find item by Id").append(System.lineSeparator());
+        screen.append("5. Find items by name").append(System.lineSeparator());
+        screen.append("6. Exit Program").append(System.lineSeparator());
+        return screen.toString();
+    }
+
+
+
     /**
      * Добавить заявку.
      */
@@ -72,13 +87,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Наличие всех заявок --------------").append(System.lineSeparator())
                 .append("------------ Имя пользователя : " + "test1" + "-----------").
                         append(System.lineSeparator())
@@ -104,13 +113,7 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("---------------------------------------------------------------------------").
                         append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .toString();
         assertThat(result, is(expected));
     }
@@ -127,15 +130,8 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Поиск по имени заявки --------------").append(System.lineSeparator())
-
                 .append("------------ Имя пользователя : " + "test1" + "-----------").
                         append(System.lineSeparator())
                 .append("------------ Описание заявки : " + "desc1" + "-----------").
@@ -144,13 +140,7 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("---------------------------------------------------------------------------").
                         append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .toString();
         assertThat(result, is(expected));
     }
@@ -167,13 +157,7 @@ public class StartUITest {
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .append("------------ Поиск по номеру заявки --------------").append(System.lineSeparator())
                 .append("------------ Имя пользователя : " + "test2" + "-----------").
                         append(System.lineSeparator())
@@ -181,13 +165,7 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("------------ Время создания заявки : " + 123L + "-----------").
                         append(System.lineSeparator())
-                .append("0. Add new Item").append(System.lineSeparator())
-                .append("1. Show all items").append(System.lineSeparator())
-                .append("2. Edit item").append(System.lineSeparator())
-                .append("3. Delete item").append(System.lineSeparator())
-                .append("4. Find item by Id").append(System.lineSeparator())
-                .append("5. Find items by name").append(System.lineSeparator())
-                .append("6. Exit Program").append(System.lineSeparator())
+                .append(menu)
                 .toString();
         assertThat(result, is(expected));
     }
