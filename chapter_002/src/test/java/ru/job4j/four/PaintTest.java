@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 06.06.2019.
  */
 public class PaintTest {
@@ -38,7 +38,7 @@ public class PaintTest {
         PrintStream stdout = System.out;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        new Paint().draw(new Square());
+        new Paint().draw(new Triangle());
         assertThat(
                 new String(out.toByteArray()),
                 is(
