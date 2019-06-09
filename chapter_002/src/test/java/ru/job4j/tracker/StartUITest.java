@@ -61,7 +61,8 @@ public class StartUITest {
                 "test name2", "desc2", "h", "3", item1.getId(), "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test name2"));
-    }/**
+    }
+    /**
      * Показать все заявки.
      */
     private final PrintStream stdout = System.out;
