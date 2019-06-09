@@ -2,8 +2,8 @@ package ru.job4j.tracker;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.1.
- * @since 04.06.2019.
+ * @version 1.2.
+ * @since 09.06.2019.
  */
 public class StartUI {
     /**

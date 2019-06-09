@@ -3,6 +3,11 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alexander Beznos (ast1bn@mail.ru).
+ * @version 1.1.
+ * @since 09.06.2019.
+ */
 public class MenuTracker {
     /**
      * Константа меню для добавления новой заявки.
@@ -192,13 +197,14 @@ public class MenuTracker {
         }
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("------------ Поиск по номеру заявки --------------");
+            System.out.println("------------ Поиск по имени заявки --------------");
             String id = input.ask("Введите номер заявки :");
             Item result = tracker.findById(id);
             if (result != null) {
                 System.out.println("------------ Имя пользователя : " + result.getName() + "-----------");
                 System.out.println("------------ Описание заявки : " + result.getDecs() + "-----------");
                 System.out.println("------------ Время создания заявки : " + result.getTime() + "-----------");
+                System.out.println("---------------------------------------------------------------------------");
             }
         }
         @Override
