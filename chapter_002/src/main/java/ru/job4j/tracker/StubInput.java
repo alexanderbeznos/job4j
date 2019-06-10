@@ -13,7 +13,6 @@ public class StubInput implements Input {
      * y - выйти из трекера.
      */
     private final String[] value;
-
     /**
      * Поле считает количество вызовом метода ask.
      * При каждом вызове надо передвинуть указатель на новое число.
