@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -14,8 +15,8 @@ import static org.hamcrest.Matchers.is;
 /**
  * Test
  * @author Akexander Beznos (ast1bn@mail.ru).
- * @version 1.1.
- * @since 04.06.2019.
+ * @version 1.2.
+ * @since 11.06.2019.
  */
 public class ValidateInputTest {
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
@@ -30,17 +31,33 @@ public class ValidateInputTest {
     public void loadSys() {
         System.setOut(this.out);
     }
-
     @Test
-    public void whenInvalidInput() {
+    public void whenInvalidInput1() {
         ValidateInput input = new ValidateInput(
                 new StubInput(new String[] {"invalid", "1"})
         );
-        input.ask("Enter", new ArrayList<>());
+        List<Integer> range = new ArrayList<>();
+        range.add(1);
+        input.ask("Enter", range);
         assertThat(
                 this.mem.toString(),
                 is(
                         String.format("Please enter validate data again%n")
+                )
+        );
+    }
+    @Test
+    public void whenInvalidInput2() {
+        ValidateInput input = new ValidateInput(
+                new StubInput(new String[] {"2", "1"})
+        );
+        List<Integer> range = new ArrayList<>();
+        range.add(1);
+        input.ask("Enter", range);
+        assertThat(
+                this.mem.toString(),
+                is(
+                        String.format("Please select key from menu%n")
                 )
         );
     }
