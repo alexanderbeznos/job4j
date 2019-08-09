@@ -15,16 +15,16 @@ public class ValidateInput implements Input {
     public int ask(String question, List<Integer> range) {
         boolean invalid = true;
         int value = -1;
-        do{
-            try{
+        do {
+            try {
                 value = input.ask(question, range);
                 invalid = false;
-            } catch(MenuOutException moe) {
+            } catch (MenuOutException moe) {
                 System.out.println("Please select key from menu");
             } catch (NumberFormatException nfe) {
                 System.out.println("Please enter validate data again");
             }
-        } while(invalid);
+        } while (invalid);
         return  value;
     }
 }

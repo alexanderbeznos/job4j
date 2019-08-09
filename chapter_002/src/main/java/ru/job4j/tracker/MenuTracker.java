@@ -55,14 +55,14 @@ public class MenuTracker {
     /**
      * Метод заполняет массив.
      */
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add(new AddItem(ADD, "Add new Item"));
         this.actions.add(new ShowItems(SHOW, "Show all items"));
         this.actions.add(new UpdateItem(REPLACE, "Edit item"));
         this.actions.add(new DeleteItem(DELETE, "Delete item"));
         this.actions.add(new FindItemById(ID, "Find item by Id"));
         this.actions.add(new FindItemsByName(NAME, "Find items by name"));
-        this.actions.add(new ExitProgram(EXIT, "Exit Program"));
+        this.actions.add(new ExitProgram(EXIT, "Exit Program", ui));
     }
     /**
      * Метод в зависимости от указанного ключа, выполняет соотвествующие действие.
@@ -183,11 +183,16 @@ public class MenuTracker {
         }
     }
     public class ExitProgram extends BaseAction {
-        public ExitProgram(int key, String name) {
+        private final StartUI ui;
+        public ExitProgram(int key, String name, StartUI ui) {
             super(key, name);
+            this.ui = ui;
+
         }
         @Override
         public void execute(Input input, Tracker tracker) {
+            System.out.println("Выбран пункт меню 6. Выход из программы. До свидания!");
+            this.ui.stop();
         }
     }
 }

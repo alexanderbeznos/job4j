@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.2.
- * @since 09.06.2019.
+ * @version 1.3.
+ * @since 09.08.2019.
  */
 public class StartUI {
     /**
@@ -17,6 +17,11 @@ public class StartUI {
      * Хранилище заявок.
      */
     private final Tracker tracker;
+    /**
+     * Флажок для выхода.
+     * Программа работает до тех пор, пока значение истинно.
+     */
+    private boolean working = true;
     /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
@@ -32,14 +37,14 @@ public class StartUI {
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
         List<Integer> range = new ArrayList<>();
-        menu.fillActions();
-        for(int i = 0; i < menu.getActionsLentgh(); i++) {
+        menu.fillActions(this);
+        for (int i = 0; i < menu.getActionsLentgh(); i++) {
             range.add(i);
         }
         do {
             menu.show();
             menu.select(input.ask("select:", range));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (this.working);
     }
     /**
      * Запускт программы.
@@ -48,5 +53,7 @@ public class StartUI {
     public static void main(String[] args) {
         new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
-
+    public  void stop() {
+        this.working = false;
+    }
 }

@@ -38,7 +38,7 @@ public class StubInput implements Input {
         int key = Integer.valueOf(this.value[this.position++]);
         boolean exist = false;
         for (int value : range) {
-            if(value == key) {
+            if (value == key) {
                 exist = true;
                 break;
             }
