@@ -60,10 +60,21 @@ public class Chess extends Application {
         );
         rect.setOnMouseReleased(
                 event -> {
-                    if (logic.move(this.findBy(momento.getX(), momento.getY()), this.findBy(event.getX(), event.getY()))) {
-                        rect.setX(((int) event.getX() / 40) * 40 + 5);
-                        rect.setY(((int) event.getY() / 40) * 40 + 5);
-                    } else {
+                    try {
+                        if (logic.move(this.findBy(momento.getX(), momento.getY()), this.findBy(event.getX(), event.getY()))) {
+                            rect.setX(((int) event.getX() / 40) * 40 + 5);
+                            rect.setY(((int) event.getY() / 40) * 40 + 5);
+                        }
+                    } catch (ImpossibleMoveException e) {
+                        System.out.println("Фигура не может так ходить");
+                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
+                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
+                    } catch (FigureNotFoundException e) {
+                        System.out.println("Не найдена фигура");
+                        rect.setX(((int) momento.getX() / 40) * 40 + 5);
+                        rect.setY(((int) momento.getY() / 40) * 40 + 5);
+                    } catch (OccupiedWayException e) {
+                        System.out.println("На пути есть другая фигура");
                         rect.setX(((int) momento.getX() / 40) * 40 + 5);
                         rect.setY(((int) momento.getY() / 40) * 40 + 5);
                     }
