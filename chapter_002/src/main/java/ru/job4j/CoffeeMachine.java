@@ -2,14 +2,10 @@ package ru.job4j;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 13.08.2019.
  */
 public class CoffeeMachine {
-    private static int one = 1;
-    private static int two = 2;
-    private static int five = 5;
-    private static int ten = 10;
 
     /**
      * Метод реализаущий выдачн сдачи автомата.
@@ -17,31 +13,37 @@ public class CoffeeMachine {
      * @param price цена кофе.
      */
     int[] changes(int value, int price) {
-        int[] change = new int[100];
-        int count = 0;
+        int[] money = new int[] {10, 5, 2,1};
+        int[] change = new int[4];
         int valueS = value - price;
-        for (int i = 0; valueS != 0; i++) {
-            if (valueS >= ten) {
-                valueS = valueS - ten;
-                change[i] = ten;
-                count++;
-            } else if (valueS >= five) {
-                valueS = valueS - five;
-                change[i] = five;
-                count++;
-            } else if (valueS >= two) {
-                valueS = valueS - two;
-                change[i] = two;
-                count++;
-            } else if (valueS >= one) {
-                valueS = valueS - one;
-                change[i] = one;
-                count++;
+        while (valueS != 0) {
+            if (valueS >= money[0]) {
+                valueS = valueS - money[0];
+                change[0]++;
+            } else if (valueS >= money[1]) {
+                valueS = valueS - money[1];
+                change[1]++;
+            } else if (valueS >= money[2]) {
+                valueS = valueS - money[2];
+                change[2]++;
+            } else if (valueS >= money[3]) {
+                valueS = valueS - money[3];
+                change[3]++;
             }
         }
+        int count = change[0] + change[1] + change[2] + change[3];
         int[] changeMain = new int[count];
-        for (int i = 0; i < count; i++) {
-            changeMain[i] = change[i];
+        int numb = 0;
+        for (int i = 0; i < change.length; i++) {
+            while (change[i] != 0) {
+                changeMain[numb] = money[i];
+                change[i]--;
+                numb++;
+                if (numb > count) {
+                    break;
+                }
+            }
+
         }
         return changeMain;
     }
