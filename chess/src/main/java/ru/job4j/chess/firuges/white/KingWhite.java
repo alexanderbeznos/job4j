@@ -5,9 +5,9 @@ import ru.job4j.chess.firuges.Figure;
 
 /**
  *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
+ * @author Alexander Beznos (ast1bn@mail.ru).
+ * @version 1.0.
+ * @since 13.08.2019.
  */
 public class KingWhite implements Figure {
     private final Cell position;
@@ -23,7 +23,11 @@ public class KingWhite implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) {
-        return new Cell[] { dest };
+        Cell[] steps = new Cell[0];
+        if(Math.abs(dest.y - source.y) < 2 && Math.abs(dest.x - source.x) < 2) {
+            steps = new Cell[] { dest };
+        }
+        return steps;
     }
 
     @Override
