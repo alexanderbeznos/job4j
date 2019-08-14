@@ -165,4 +165,3 @@ public class StartUITest {
         assertThat(result, is(expected));
     }
 }
-

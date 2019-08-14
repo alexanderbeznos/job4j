@@ -1,5 +1,9 @@
 package ru.job4j;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
  * @version 1.1.

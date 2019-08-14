@@ -128,5 +128,3 @@ public class TrackerTest {
         assertThat(res, is(third));
     }
 }
-
-
