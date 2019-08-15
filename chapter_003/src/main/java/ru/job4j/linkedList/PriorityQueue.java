@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.3.
+ * @version 1.4.
  * @since 15.08.2019.
  */
 public class PriorityQueue {
@@ -23,14 +23,19 @@ public class PriorityQueue {
             return;
         }
         int i = 0;
+        boolean a = false;
         for (Task o : tasks) {
             if (o.getPriority() >= task.getPriority()) {
-                tasks.add(i, task);
+                a = true;
                 break;
             }
             i++;
         }
-        tasks.add(task);
+        if(a) {
+            tasks.add(i, task);
+        } else {
+            tasks.add(task);
+        }
     }
 
     public Task take() {
