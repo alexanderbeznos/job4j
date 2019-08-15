@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,7 +34,7 @@ public class ValidateInputTest {
     }
     @Test
     public void whenInvalidInput1() {
-        ValidateInput input = new ValidateInput(new StubInput(new String[] {"invalid", "1"}));
+        ValidateInput input = new ValidateInput(new StubInput(Arrays.asList("invalid", "1")));
         List<Integer> range = new ArrayList<>();
         range.add(1);
         input.ask("Enter", range);
@@ -41,7 +42,7 @@ public class ValidateInputTest {
     }
     @Test
     public void whenInvalidInput2() {
-        ValidateInput input = new ValidateInput(new StubInput(new String[] {"2", "1"}));
+        ValidateInput input = new ValidateInput(new StubInput(Arrays.asList("2", "1")));
         List<Integer> range = new ArrayList<>();
         range.add(1);
         input.ask("Enter", range);

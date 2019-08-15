@@ -8,8 +8,8 @@ import java.util.*;
  * @since 27.05.2019.
  */
 public class Tracker {
-    private final Item[] items = new Item[100];
-    private int position = 0;
+    private final List<Item> items = new ArrayList<>();
+
     private static final Random RN = new Random();
     /**
      * Метод реализаущий добавление заявки в хранилище.
@@ -17,7 +17,7 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        this.items[this.position++] = item;
+        this.items.add(item);
         return item;
     }
     /**
@@ -30,10 +30,10 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         boolean repl = false;
-        for (int i = 0; i != items.length; i++) {
-            if (items[i].getId().equals(id)) {
-                items[i] = item;
-                items[i].setId(id);
+        for (int i = 0; i != items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
+                items.add(i, item);
+                items.get(i).setId(id);
                 repl = true;
                 break;
             }
@@ -47,11 +47,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i != this.position; i++) {
-            if (items[i].getId().equals(id)) {
-                System.arraycopy(items, i + 1, items, i, position - i - 1);
-                items[position - 1] = null;
-                position--;
+        for (int i = 0; i != items.size(); i++) {
+            if (items.get(i).getId().equals(id)) {
+                items.remove(i);
                 result = true;
                 break;
             }
@@ -62,23 +60,22 @@ public class Tracker {
      * Метод позволяющий найти все заявки.
      * @return возврат.
      */
-    public Item[] findAll() {
-        return Arrays.copyOf(this.items, this.position);
+    public List<Item> findAll() {
+        return items;
     }
     /**
      * Метод позволябщий найти заявки по имени.
      * @param key передавать в метод.
      * @return возврат.
      */
-    public Item[] findByName(String key) {
-        Item[] step = new Item[100];
-        int poz = 0;
-        for (int i = 0; i != position; i++) {
-            if (items[i] != null && items[i].getName().equals(key)) {
-                step[poz++] = items[i];
+    public List<Item> findByName(String key) {
+        List<Item> step = new ArrayList<>();
+        for (int i = 0; i != items.size(); i++) {
+            if (items.get(i) != null && items.get(i).getName().equals(key)) {
+                step.add(items.get(i));
             }
         }
-        return Arrays.copyOf(step, poz);
+        return step;
     }
     /**
      * Метод позволябщий найти заявки по id.
@@ -87,9 +84,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (int i = 0; i != position; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
-                result = items[i];
+        for (int i = 0; i != items.size(); i++) {
+            if (items.get(i) != null && items.get(i).getId().equals(id)) {
+                result = items.get(i);
                 break;
             }
         }

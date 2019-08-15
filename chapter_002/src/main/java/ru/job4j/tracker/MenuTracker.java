@@ -106,11 +106,11 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Наличие всех заявок --------------");
-            Item[] result = tracker.findAll();
-            for (int i = 0; i != result.length; i++) {
-                System.out.println("------------ Имя пользователя : " + result[i].getName() + "-----------");
-                System.out.println("------------ Описание заявки : " + result[i].getDecs() + "-----------");
-                System.out.println("------------ Время создания заявки : " + result[i].getTime() + "-----------");
+            List<Item> result = tracker.findAll();
+            for (int i = 0; i != result.size(); i++) {
+                System.out.println("------------ Имя пользователя : " + result.get(i).getName() + "-----------");
+                System.out.println("------------ Описание заявки : " + result.get(i).getDecs() + "-----------");
+                System.out.println("------------ Время создания заявки : " + result.get(i).getTime() + "-----------");
                 System.out.println("---------------------------------------------------------------------------");
             }
         }

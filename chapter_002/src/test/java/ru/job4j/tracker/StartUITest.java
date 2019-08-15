@@ -12,6 +12,8 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -34,9 +36,9 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
+        Input input = new StubInput(Arrays.asList("0", "test name", "desc", "6"));
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     /**
      * Редактировать заявку.
@@ -45,7 +47,7 @@ public class StartUITest {
     public void whenUpdateThenTrackerHasUpdatedValue() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
-        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "y"});
+        Input input = new StubInput(Arrays.asList("2", item.getId(), "test replace", "заменили заявку", "6"));
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
@@ -57,10 +59,10 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("test name1", "desc1", 123L));
         Item item2 = tracker.add(new Item("test name2", "desc2", 1234L));
-        Input input = new StubInput(new String[]{"0", "test name1", "desc1", "h", "0",
-                "test name2", "desc2", "h", "3", item1.getId(), "y"});
+        Input input = new StubInput(Arrays.asList("0", "test name1", "desc1", "0",
+                "test name2", "desc2", "3", item1.getId(), "6"));
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name2"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name2"));
     }
     /**
      * Показать все заявки.
@@ -81,7 +83,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("test1", "desc1", 123L));
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
-        Input input = new StubInput(new String[]{"1", "y"});
+        Input input = new StubInput(Arrays.asList("1", "6"));
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
@@ -111,6 +113,8 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("---------------------------------------------------------------------------").
                         append(System.lineSeparator())
+                .append(menu).append("Выбран пункт меню 6. Выход из программы. До свидания!").
+                        append(System.lineSeparator())
                 .toString();
         assertThat(result, is(expected));
     }
@@ -123,7 +127,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("test1", "desc1", 123L));
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
-        Input input = new StubInput(new String[]{"5", item1.getId(), "y"});
+        Input input = new StubInput(Arrays.asList("5", item1.getId(), "6"));
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
@@ -137,6 +141,8 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("---------------------------------------------------------------------------").
                         append(System.lineSeparator())
+                .append(menu).                append("Выбран пункт меню 6. Выход из программы. До свидания!").
+                        append(System.lineSeparator())
                 .toString();
         assertThat(result, is(expected));
     }
@@ -149,7 +155,7 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("test1", "desc1", 123L));
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
-        Input input = new StubInput(new String[]{"4", item2.getId(), "y"});
+        Input input = new StubInput(Arrays.asList("4", item2.getId(), "6"));
         new StartUI(input, tracker).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
@@ -160,6 +166,8 @@ public class StartUITest {
                 .append("------------ Описание заявки : " + "desc2" + "-----------").
                         append(System.lineSeparator())
                 .append("------------ Время создания заявки : " + 123L + "-----------").
+                        append(System.lineSeparator())
+                .append(menu).append("Выбран пункт меню 6. Выход из программы. До свидания!").
                         append(System.lineSeparator())
                 .toString();
         assertThat(result, is(expected));
