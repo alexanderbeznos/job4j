@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.2.
+ * @version 1.3.
  * @since 15.08.2019.
  */
 public class PriorityQueue {
@@ -30,7 +30,9 @@ public class PriorityQueue {
             }
             i++;
         }
+        tasks.add(task);
     }
+
     public Task take() {
         return this.tasks.poll();
     }
