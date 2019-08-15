@@ -1,12 +1,12 @@
 package main.java.ru.job4j.arrayList;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.1.
- * @since 14.08.2019.
+ * @version 1.2.
+ * @since 15.08.2019.
  */
 public class ConvertList2Array {
 
@@ -27,5 +27,18 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    /**
+     * Конвертирует лист массивов в лист Integer.
+     */
+    public List<Integer> convert (List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        for (int[] o : list) {
+            for (int o1 : o) {
+                result.add(o1);
+            }
+        }
+        return result;
     }
 }
