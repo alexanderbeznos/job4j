@@ -32,7 +32,7 @@ public class Tracker {
         boolean repl = false;
         for (int i = 0; i != items.size(); i++) {
             if (items.get(i).getId().equals(id)) {
-                items.add(i, item);
+                items.set(i, item);
                 items.get(i).setId(id);
                 repl = true;
                 break;
