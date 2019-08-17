@@ -42,7 +42,7 @@ public class SquareTest {
         int bound = 10;
         Square square = new Square();
         int[] rst = square.calculate(bound);
-        int[] expect = new int[] {1, 4, 9, 16, 25, 36, 42, 49, 64, 81, 100};
+        int[] expect = new int[] {1, 4, 9, 16, 25, 36, 49, 64, 81, 100};
         assertThat(rst, is(expect));
     }
 }
