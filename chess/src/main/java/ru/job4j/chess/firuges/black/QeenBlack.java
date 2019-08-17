@@ -24,7 +24,7 @@ public class QeenBlack implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[0];
-        if((Math.abs(dest.y - source.y) == Math.abs(dest.x - source.x))) {
+        if ((Math.abs(dest.y - source.y) == Math.abs(dest.x - source.x))) {
             int size = Math.abs(source.x - dest.x);
             steps = new Cell[size];
             for (int i = 0; i < size; i++) {

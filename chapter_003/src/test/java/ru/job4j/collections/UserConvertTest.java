@@ -1,8 +1,9 @@
-package test.java.ru.job4j.collections;
+package ru.job4j.collections;
 
-import main.java.ru.job4j.map.User;
-import main.java.ru.job4j.map.UserConvert;
+
 import org.junit.Test;
+import ru.job4j.map.User;
+import ru.job4j.map.UserConvert;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -20,7 +20,7 @@ public enum Cell {
     public static Cell findXandY(int x, int y) {
         Cell find = null;
         for (Cell o : Cell.values()) {
-            if(o.x  == x && o.y == y) {
+            if (o.x  == x && o.y == y) {
                 find = o;
             }
         }

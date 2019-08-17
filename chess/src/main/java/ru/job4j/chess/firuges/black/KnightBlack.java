@@ -24,10 +24,10 @@ public class KnightBlack implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[0];
-        if((Math.abs(dest.y - source.y) == 2 && Math.abs(dest.x - source.x) == 1) ||
-                (Math.abs(dest.y - source.y) == 1 && Math.abs(dest.x - source.x) == 2)) {
+        if ((Math.abs(dest.y - source.y) == 2 && Math.abs(dest.x - source.x) == 1)
+                || (Math.abs(dest.y - source.y) == 1 && Math.abs(dest.x - source.x) == 2)) {
             int size = Math.abs(dest.y - source.y) - Math.abs(dest.x - source.x);
-            steps = new Cell[] { dest };
+            steps = new Cell[] {dest};
 
 
         }

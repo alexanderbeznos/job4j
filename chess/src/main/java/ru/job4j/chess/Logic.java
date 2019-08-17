@@ -24,7 +24,7 @@ public class Logic {
      * Если да, то на новой ячейке создаётся копия рассматриваемой фигуры.
      */
     public boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException,
-            FigureNotFoundException{
+            FigureNotFoundException {
         boolean rst = false;
         int index = this.findBy(source);
         if (index == -1) {

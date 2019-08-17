@@ -1,4 +1,4 @@
-package main.java.ru.job4j.arrayList;
+package ru.job4j.array;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class ConvertList2Array {
     /**
      * Конвертирует лист массивов в лист Integer.
      */
-    public List<Integer> convert (List<int[]> list) {
+    public List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         for (int[] o : list) {
             for (int o1 : o) {

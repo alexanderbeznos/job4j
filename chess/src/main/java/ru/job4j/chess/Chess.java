@@ -172,7 +172,7 @@ public class Chess extends Application {
         this.logic.add(figure);
         Cell position = figure.position();
         grid.getChildren().add(
-                this.buildFigure(position.x * 40 + 5, position.y * 40 + 5,30, figure.icon()));
+                this.buildFigure(position.x * 40 + 5, position.y * 40 + 5, 30, figure.icon()));
     }
 
     private Cell findBy(double graphX, double graphY) {

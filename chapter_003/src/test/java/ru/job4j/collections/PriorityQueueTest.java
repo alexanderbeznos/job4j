@@ -1,9 +1,11 @@
-package test.java.ru.job4j.collections;
+package ru.job4j.collections;
 
-import main.java.ru.job4j.linkedList.PriorityQueue;
-import main.java.ru.job4j.linkedList.Task;
+
 import org.junit.Test;
-import static org.hamcrest.Matchers.is;
+import ru.job4j.linkedlist.PriorityQueue;
+import ru.job4j.linkedlist.Task;
+
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PriorityQueueTest {

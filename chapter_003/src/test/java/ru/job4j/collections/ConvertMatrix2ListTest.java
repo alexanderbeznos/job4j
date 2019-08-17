@@ -1,6 +1,6 @@
-package test.java.ru.job4j.collections;
+package ru.job4j.collections;
 
-import main.java.ru.job4j.arrayList.ConvertMatrix2List;
+import ru.job4j.array.ConvertMatrix2List;
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

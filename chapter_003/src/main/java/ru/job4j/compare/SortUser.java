@@ -1,4 +1,4 @@
-package main.java.ru.job4j.compare;
+package ru.job4j.compare;
 
 import java.util.*;
 
@@ -21,7 +21,7 @@ public class SortUser {
      * Сортировка по длине имени.
      */
     public List<User> sortNameLength(List<User> list) {
-        Collections.sort(list, new Comparator<User>(){
+        Collections.sort(list, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
                 return Integer.compare(o1.getName().length(), o2.getName().length());
@@ -34,7 +34,7 @@ public class SortUser {
      * Сортировка по длине имени и по возрасту.
      */
     public List<User> sortByAllFields(List<User> list) {
-        Collections.sort(list, new Comparator<User>(){
+        Collections.sort(list, new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
                 int a = Integer.compare(o1.getName().length(), o2.getName().length());

@@ -1,4 +1,4 @@
-package main.java.ru.job4j.linkedList;
+package ru.job4j.linkedlist;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).

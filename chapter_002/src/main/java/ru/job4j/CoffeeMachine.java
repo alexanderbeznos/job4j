@@ -17,7 +17,7 @@ public class CoffeeMachine {
      * @param price цена кофе.
      */
     int[] changes(int value, int price) {
-        int[] money = new int[] {10, 5, 2,1};
+        int[] money = new int[] {10, 5, 2, 1};
         int[] change = new int[4];
         int valueS = value - price;
         while (valueS != 0) {

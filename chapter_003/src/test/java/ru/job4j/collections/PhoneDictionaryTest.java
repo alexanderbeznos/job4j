@@ -1,9 +1,11 @@
-package test.java.ru.job4j.collections;
+package ru.job4j.collections;
 
 
-import main.java.ru.job4j.telefon.Person;
-import main.java.ru.job4j.telefon.PhoneDictionary;
+
 import org.junit.Test;
+import ru.job4j.telefon.Person;
+import ru.job4j.telefon.PhoneDictionary;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import java.util.List;

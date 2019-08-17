@@ -1,4 +1,4 @@
-package main.java.ru.job4j.map;
+package ru.job4j.map;
 
 public class User {
     private int id;

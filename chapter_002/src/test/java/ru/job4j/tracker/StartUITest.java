@@ -141,7 +141,7 @@ public class StartUITest {
                         append(System.lineSeparator())
                 .append("---------------------------------------------------------------------------").
                         append(System.lineSeparator())
-                .append(menu).                append("Выбран пункт меню 6. Выход из программы. До свидания!").
+                .append(menu).append("Выбран пункт меню 6. Выход из программы. До свидания!").
                         append(System.lineSeparator())
                 .toString();
         assertThat(result, is(expected));

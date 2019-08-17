@@ -24,8 +24,8 @@ public class KingBlack implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) {
         Cell[] steps = new Cell[0];
-        if(Math.abs(dest.y - source.y) < 2 && Math.abs(dest.x - source.x) < 2) {
-            steps = new Cell[] { dest };
+        if (Math.abs(dest.y - source.y) < 2 && Math.abs(dest.x - source.x) < 2) {
+            steps = new Cell[] {dest};
         }
         return steps;
     }

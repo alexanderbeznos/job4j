@@ -1,4 +1,5 @@
-package main.java.ru.job4j.linkedList;
+package ru.job4j.linkedlist;
+
 
 import java.util.LinkedList;
 

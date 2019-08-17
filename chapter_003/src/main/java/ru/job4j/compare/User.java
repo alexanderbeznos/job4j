@@ -1,4 +1,4 @@
-package main.java.ru.job4j.compare;
+package ru.job4j.compare;
 
 public class User implements Comparable<User> {
     private String name;

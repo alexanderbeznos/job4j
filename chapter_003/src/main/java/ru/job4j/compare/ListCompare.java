@@ -1,4 +1,4 @@
-package main.java.ru.job4j.compare;
+package ru.job4j.compare;
 
 import java.util.Comparator;
 

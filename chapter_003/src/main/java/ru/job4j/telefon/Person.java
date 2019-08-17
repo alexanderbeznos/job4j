@@ -1,4 +1,4 @@
-package main.java.ru.job4j.telefon;
+package ru.job4j.telefon;
 
 public class Person {
     private String name;

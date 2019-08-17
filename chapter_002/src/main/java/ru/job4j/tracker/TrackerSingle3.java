@@ -10,9 +10,9 @@ public class TrackerSingle3 {
     private TrackerSingle3() {
     }
     private static class Holder {
-        private final static TrackerSingle3 instance = new TrackerSingle3();
+        private final static TrackerSingle3 INSTANCE = new TrackerSingle3();
     }
     public static TrackerSingle3 getInstance() {
-        return Holder.instance;
+        return Holder.INSTANCE;
     }
 }
