@@ -1,6 +1,11 @@
-﻿# Репозиторий Александра Безноса.
+﻿[![Build Status](https://travis-ci.org/alexanderbeznos/job4j.svg?branch=master)](https://travis-ci.org/alexanderbeznos/job4j)
 
-Я прохожу обучения по курсу Job4j. Планирую его пройти до сентября 2019 года.
+[![codecov](https://codecov.io/gh/alexanderbeznos/job4j/branch/master/graph/badge.svg)](https://codecov.io/gh/alexanderbeznos/job4j)
+
+
+# Репозиторий Александра Безноса.
+
+Я прохожу обучения по курсу Job4j. Планирую его пройти до января 2020 года.
 
 Ниже находятся наиболее интересные проекты, которые я реализовал во время обучения.
 
