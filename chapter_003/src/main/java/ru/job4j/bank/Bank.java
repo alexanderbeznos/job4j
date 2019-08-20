@@ -76,7 +76,7 @@ public class Bank {
      * метод по поиску аккаунтов по паспорту.
      */
     public List<Account> findAccountsOnPassport(String passport) {
-        List<Account> a = null;
+        List<Account> a = new ArrayList<>();
         for (Map.Entry<User, List<Account>> user : map.entrySet()) {
             if (user.getKey().getPassport().equals(passport)) {
                 a = user.getValue();
