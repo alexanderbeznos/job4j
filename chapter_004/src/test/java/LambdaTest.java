@@ -34,7 +34,7 @@ public class LambdaTest {
     public void whenLogarithmicFunctionThenLogarithmicResults() {
         Lambda function = new Lambda();
         List<Double> result = function.diapason(5, 8, x -> Math.log10(x) + 1);
-        List<Double> expected = Arrays.asList(Math.log10(5) + 1, Math.log10(6) + 1,Math.log10(7) + 1);
+        List<Double> expected = Arrays.asList(Math.log10(5) + 1, Math.log10(6) + 1, Math.log10(7) + 1);
         assertThat(result, is(expected));
     }
 }
