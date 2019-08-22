@@ -13,11 +13,22 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
-import java.util.List;
+import java.util.function.Consumer;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+
 public class StartUITest {
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream stdout = System.out;
+    private final Consumer<String> output = new Consumer<>() {
+        private final PrintStream stdout = new PrintStream(out);
+        @Override
+        public void accept(String s) {
+            stdout.println(s);
+        }
+    };
+
     private final String menu = this.menus();
     private String menus() {
         StringBuilder screen = new StringBuilder();
@@ -37,7 +48,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(Arrays.asList("0", "test name", "desc", "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
     /**
@@ -48,7 +59,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 123L));
         Input input = new StubInput(Arrays.asList("2", item.getId(), "test replace", "заменили заявку", "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
     /**
@@ -61,14 +72,10 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test name2", "desc2", 1234L));
         Input input = new StubInput(Arrays.asList("0", "test name1", "desc1", "0",
                 "test name2", "desc2", "3", item1.getId(), "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name2"));
     }
-    /**
-     * Показать все заявки.
-     */
-    private final PrintStream stdout = System.out;
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
     @Before
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
@@ -77,6 +84,10 @@ public class StartUITest {
     public void backOutput() {
         System.setOut(this.stdout);
     }
+
+    /**
+     * Показать все заявки.
+     */
     @Test
     public void whenTrackerShowItems() {
         Tracker tracker = new Tracker();
@@ -84,7 +95,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
         Input input = new StubInput(Arrays.asList("1", "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
                 .append(menu)
@@ -128,7 +139,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
         Input input = new StubInput(Arrays.asList("5", item1.getId(), "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
                 .append(menu)
@@ -156,7 +167,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("test2", "desc2", 123L));
         Item item3 = tracker.add(new Item("test3", "desc3", 123L));
         Input input = new StubInput(Arrays.asList("4", item2.getId(), "6"));
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         String result = new String(out.toByteArray());
         String expected = new StringBuilder()
                 .append(menu)
