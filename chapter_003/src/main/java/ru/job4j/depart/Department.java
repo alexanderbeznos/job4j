@@ -28,7 +28,7 @@ public class Department {
     }
 
     /**
-     * метод сортирует по убыванию.
+     * метод сортирует по убыванию.хз
      */
     public List<String> sortlow(List<String> list) {
         ArrayList<String> resul = new ArrayList<>();

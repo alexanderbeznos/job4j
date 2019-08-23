@@ -10,8 +10,8 @@ import static org.junit.Assert.assertThat;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
- * @since 21.08.2019.
+ * @version 1.1.
+ * @since 23.08.2019.
  */
 public class DepartmentTest {
 
@@ -54,6 +54,37 @@ public class DepartmentTest {
         for (String o : cons) {
             System.out.println(o);
         }
+    }
+    /**
+     * тест на сравнений списков.
+     */
+    @Test
+    public void wheCompare() {
+        List<String> expect = new ArrayList<>();
+        expect.add("K2");
+        expect.add("K2\\SK1");
+        expect.add("K2\\SK1\\SSK2");
+        expect.add("K2\\SK1\\SSK1");
+        expect.add("K1");
+        expect.add("K1\\SK2");
+        expect.add("K1\\SK1");
+        expect.add("K1\\SK1\\SSK2");
+        expect.add("K1\\SK1\\SSK1");
+        Department obj = new Department();
+        List<String> list = new ArrayList<>();
+        list.add("K1\\SK1");
+        list.add("K1\\SK2");
+        list.add("K1\\SK1\\SSK1");
+        list.add("K1\\SK1\\SSK2");
+        list.add("K2");
+        list.add("K2\\SK1\\SSK1");
+        list.add("K2\\SK1\\SSK2");
+        Set<String> li =  obj.structure(list);
+        List<String> re = new ArrayList<>(li);
+        List<String> result = obj.sortlow(re);
+        assertThat(result, is(expect));
+
+
 
 
     }
