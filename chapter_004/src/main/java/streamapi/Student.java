@@ -1,5 +1,7 @@
 package streamapi;
 
+import java.util.Objects;
+
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
  * @version 1.0.
@@ -20,5 +22,23 @@ public class Student {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Student student = (Student) o;
+        return score == student.score
+                && Objects.equals(name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, score);
     }
 }
