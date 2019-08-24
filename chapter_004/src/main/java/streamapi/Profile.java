@@ -2,7 +2,7 @@ package streamapi;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
- * @version 1.0.
+ * @version 1.1.
  * @since 24.08.2019.
  */
 public class Profile {
