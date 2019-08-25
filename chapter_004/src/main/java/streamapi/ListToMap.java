@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  */
 public class ListToMap {
     public Map<String, Student> collectToMap(List<Student> students) {
-        Set<Student> s = new HashSet<>(students);
-        return s.stream().collect(Collectors.toMap(e -> e.getName(), e -> e));
+        return students.stream().collect(Collectors.toMap(e -> e.getName(), e -> e,
+                (e1, e2) -> e1));
     }
 }
