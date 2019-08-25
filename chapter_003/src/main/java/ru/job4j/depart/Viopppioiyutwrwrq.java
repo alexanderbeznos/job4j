@@ -7,20 +7,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class sVSSBSB {
+public class Viopppioiyutwrwrq {
     public static void main(String[] args) {
-
-
-
         List<String> list = new ArrayList<>();
-//        String a = "K1";
-//        String b = "K2";
-//
-//        String eee = "K1\\SK1\\SSK1";
-//
-//        System.out.println(eee.startsWith(b));
-//
-//
         list.add("K1\\SK1");
         list.add("K1\\SK2");
         list.add("K1\\SK1\\SSK1");
@@ -32,7 +21,6 @@ public class sVSSBSB {
         list.add("K1");
         list.add("K2\\SK1");
 
-
         list.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
@@ -40,14 +28,11 @@ public class sVSSBSB {
             }
         });
 //
-//
 //       ArrayList<String> qwe = new ArrayList<>();
 //
 //        TreeSet<String> li = new TreeSet<>();
 //        li.add("K1");
 //        li.add("K2");
-//
-//
 //
 //        ArrayList<String> res = new ArrayList<>();
 //        for (String out : li) {
@@ -58,16 +43,12 @@ public class sVSSBSB {
 //            }
 //        }
 
-
-
-
 //        list.sort(new Comparator<String>() {
 //            @Override
 //            public int compare(String o1, String o2) {
 //                return o1.length() == o2.length() ? o2.compareTo(o1) : Integer.compare(o1.length(), o2.length());
 //            }
 //        });
-
 
 //            for (String inn : list) {
 //                if (inn.contains(a)) {
@@ -78,18 +59,9 @@ public class sVSSBSB {
             System.out.println(o);
         }
 
-
-
-
-
-
-
 //        for (String o : qwe) {
 //            System.out.println(o);
 //        }
-
-
-
 
 //        list.add("K1\\SK1");
 //        list.add("K1\\SK2");
@@ -104,9 +76,6 @@ public class sVSSBSB {
 //        list.add("K1\\SK2");
 //        list.add("K1\\SK1\\SSK1");
 //        list.add("K1\\SK1\\SSK2");
-//
-//
-//
 //
 //        //Collections.sort(list, new Nme());
 //        list.sort(new Comparator<String>() {
@@ -127,24 +96,6 @@ public class sVSSBSB {
 //            }
 //        }
 
-
-
-
-
-//        String s = "K1\\SK1\\SSK1";
-//        String q = s.replace("\\d", "");
-//        System.out.println(q);
-
-//        String[] mas = s.split("\\\\");
-//        for (int i = 0; i < mas.length; i++) {
-//            System.out.println(mas[i]);
-//        }
-//        List<String> list = new ArrayList<>();
-
-
-
-
-
 //        TreeSet<String> li = new TreeSet<>(new Comparator<String>() {
 //            @Override
 //            public int compare(String o1, String o2) {
@@ -162,21 +113,11 @@ public class sVSSBSB {
 //            System.out.println(o);
 //        }
 
-
-
-
-
-
 //        li.add("K1");
 //        li.add("K1\\SK1");
 //        li.add("K1\\SK2");
 //        li.add("K1\\SK1\\SSK1");
 //        li.add("K1\\SK1\\SSK2");
-
-
-
-
-
 
 //        Pattern p = Pattern.compile("^[a-zA-Z]*[0-9]*");
 //        Matcher m = p.matcher("KL11\\SK1\\SSK1");
@@ -191,8 +132,6 @@ public class sVSSBSB {
 //        for (int i = 0; i < mas.length; i++) {
 //            System.out.println(mas[i]);
 //        }
-
-
 
 //        List<String> list = new ArrayList<>();
 //
@@ -214,17 +153,5 @@ public class sVSSBSB {
 //        for (int i = 0; i < a.size(); i++) {
 //            System.out.println(a.get(i));
 //        }
-
-//    }
-//    public ArrayList<String> setmake(String treeSet, List<String> list) {
-//        ArrayList<String> res = new ArrayList<>();
-//
-//        for (String inn : list) {
-//            if (inn.contains(treeSet)) {
-//                res.add(inn);
-//            }
-//        }
-//
-//        return res;
     }
 }
