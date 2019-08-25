@@ -15,9 +15,8 @@ public class UserConvertTest {
     @Test
     public void whenListToMap() {
         UserConvert a = new UserConvert();
-        List<User> list = new ArrayList<>();
-        list.add(new User(1, "Igor", "Tero"));
-        list.add(new User(2, "Vasya", "Poru"));
+        List<User> list = List.of(new User(1, "Igor", "Tero"),
+                new User(2, "Vasya", "Poru"));
         HashMap<Integer, User> maper = a.process(list);
         String expect = "Tero";
         assertThat(maper.get(1).getCity(), is(expect));

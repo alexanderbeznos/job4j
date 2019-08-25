@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class SortUser {
 
-    /**
+    /**zz
      * Метод организрвывает сортировку User..
      */
     public Set<User> sort(List<User> list) {

@@ -17,7 +17,8 @@ public class SortUserTest {
     @Test
     public void whenListToMap() {
         SortUser a = new SortUser();
-        Set<User> result = a.sort(Arrays.asList(new User("Sanya", 2), new User("Igor", 1)));
+        //Set<User> result = a.sort(Arrays.asList(new User("Sanya", 2), new User("Igor", 1)));
+        Set<User> result = a.sort(List.of(new User("Sanya", 2), new User("Igor", 1)));
         String expect = "Igor";
         assertThat(result.iterator().next().getName(), is(expect));
     }
@@ -45,7 +46,7 @@ public class SortUserTest {
         List<User> result = a.sortByAllFields(Arrays.asList(new User("Сергей", 25), new User("Иван", 30),
                 new User("Сергей", 20), new User("Иван", 25)));
         int expect = 25;
-        assertThat(result.iterator().next().getAge(), is(25));
+        assertThat(result.iterator().next().getAge(), is(expect));
     }
 
 

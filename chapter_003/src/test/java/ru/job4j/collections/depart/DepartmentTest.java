@@ -21,9 +21,10 @@ public class DepartmentTest {
     @Test
     public void whenFind() {
         Department obj = new Department();
-        List<String> list = new ArrayList<>();
-        list.add("K1\\SK1\\SSK1");
-        list.add("K1\\SK1\\SSK2");
+//        List<String> list = new ArrayList<>();
+//        list.add("K1\\SK1\\SSK1");
+//        list.add("K1\\SK1\\SSK2");
+        List<String> list = List.of("K1\\SK1\\SSK1", "K1\\SK1\\SSK2");
         Set<String> li =  obj.structure(list);
         List<String> re = new ArrayList<>(li);
         String result = re.get(1);
@@ -37,14 +38,16 @@ public class DepartmentTest {
     @Test
     public void whenLow() {
         Department obj = new Department();
-        List<String> list = new ArrayList<>();
-        list.add("K1\\SK1");
-        list.add("K1\\SK2");
-        list.add("K1\\SK1\\SSK1");
-        list.add("K1\\SK1\\SSK2");
-        list.add("K2");
-        list.add("K2\\SK1\\SSK1");
-        list.add("K2\\SK1\\SSK2");
+//        List<String> list = new ArrayList<>();
+//        list.add("K1\\SK1");
+//        list.add("K1\\SK2");
+//        list.add("K1\\SK1\\SSK1");
+//        list.add("K1\\SK1\\SSK2");
+//        list.add("K2");
+//        list.add("K2\\SK1\\SSK1");
+//        list.add("K2\\SK1\\SSK2");
+        List<String> list = List.of("K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2", "K2", "K2\\SK1\\SSK1",
+                "K2\\SK1\\SSK2");
         Set<String> li =  obj.structure(list);
         List<String> re = new ArrayList<>(li);
         List<String> cons = obj.sortlow(re);
@@ -60,25 +63,29 @@ public class DepartmentTest {
      */
     @Test
     public void wheCompare() {
-        List<String> expect = new ArrayList<>();
-        expect.add("K2");
-        expect.add("K2\\SK1");
-        expect.add("K2\\SK1\\SSK2");
-        expect.add("K2\\SK1\\SSK1");
-        expect.add("K1");
-        expect.add("K1\\SK2");
-        expect.add("K1\\SK1");
-        expect.add("K1\\SK1\\SSK2");
-        expect.add("K1\\SK1\\SSK1");
+//        List<String> expect = new ArrayList<>();
+//        expect.add("K2");
+//        expect.add("K2\\SK1");
+//        expect.add("K2\\SK1\\SSK2");
+//        expect.add("K2\\SK1\\SSK1");
+//        expect.add("K1");
+//        expect.add("K1\\SK2");
+//        expect.add("K1\\SK1");
+//        expect.add("K1\\SK1\\SSK2");
+//        expect.add("K1\\SK1\\SSK1");
+        List<String> expect = List.of("K2", "K2\\SK1", "K2\\SK1\\SSK2", "K2\\SK1\\SSK1", "K1", "K1\\SK2", "K1\\SK1",
+                "K1\\SK1\\SSK2", "K1\\SK1\\SSK1");
         Department obj = new Department();
-        List<String> list = new ArrayList<>();
-        list.add("K1\\SK1");
-        list.add("K1\\SK2");
-        list.add("K1\\SK1\\SSK1");
-        list.add("K1\\SK1\\SSK2");
-        list.add("K2");
-        list.add("K2\\SK1\\SSK1");
-        list.add("K2\\SK1\\SSK2");
+//        List<String> list = new ArrayList<>();
+//        list.add("K1\\SK1");
+//        list.add("K1\\SK2");
+//        list.add("K1\\SK1\\SSK1");
+//        list.add("K1\\SK1\\SSK2");
+//        list.add("K2");
+//        list.add("K2\\SK1\\SSK1");
+//        list.add("K2\\SK1\\SSK2");
+        List<String> list = List.of("K1\\SK1", "K1\\SK2", "K1\\SK1\\SSK1", "K1\\SK1\\SSK2", "K2", "K2\\SK1\\SSK1",
+                "K2\\SK1\\SSK2");
         Set<String> li =  obj.structure(list);
         List<String> re = new ArrayList<>(li);
         List<String> result = obj.sortlow(re);
