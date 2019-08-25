@@ -37,8 +37,10 @@ public class Bank {
         Set<User> list = map.keySet();
         List<User> a = list.stream().filter(p -> p.getPassport().
                 equals(passport)).collect(Collectors.toList());
-        User user = a.get(0);
-        map.get(user).add(account);
+        if (!a.isEmpty()) {
+            User user = a.get(0);
+            map.get(user).add(account);
+        }
     }
 
     /**
@@ -55,11 +57,11 @@ public class Bank {
 //        }
         Set<User> list = map.keySet();
         List<User> a = list.stream().filter(p -> p.getPassport().
-                equals(passport)).collect(Collectors.toList());
-        User user = a.get(0);
-        map.get(user).remove(account);
-
-
+              equals(passport)).collect(Collectors.toList());
+        if (!a.isEmpty()) {
+            User user = a.get(0);
+            map.get(user).remove(account);
+        }
     }
 
     /**
@@ -73,11 +75,14 @@ public class Bank {
 //            }
 //        }
 //        return ret;
+        List<Account> fin = null;
         Set<User> list = map.keySet();
         List<User> a = list.stream().filter(p -> p.getPassport().
                 equals(passport)).collect(Collectors.toList());
-        User user = a.get(0);
-        List<Account> fin = map.get(user);
+        if (!a.isEmpty()) {
+            User user = a.get(0);
+            fin = map.get(user);
+        }
         return fin;
     }
 
@@ -102,11 +107,14 @@ public class Bank {
 //            }
 //        }
 //        return a;
+        List<Account> fin = null;
         Set<User> list = map.keySet();
         List<User> a = list.stream().filter(p -> p.getPassport().
                 equals(passport)).collect(Collectors.toList());
-        User user = a.get(0);
-        List<Account> fin = map.get(user);
+        if (!a.isEmpty()) {
+            User user = a.get(0);
+            fin = map.get(user);
+        }
         return fin;
 
     }
@@ -122,9 +130,14 @@ public class Bank {
 //            }
 //        }
 //        return a;
+
+        Account ac = null;
         List<Account> a = list.stream().filter(p -> p.getRequisites().
                 equals(requisite)).collect(Collectors.toList());
-        Account ac = a.get(0);
+        if (!a.isEmpty()) {
+            ac = a.get(0);
+        }
         return ac;
+
     }
 }
