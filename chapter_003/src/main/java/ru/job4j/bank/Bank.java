@@ -34,13 +34,18 @@ public class Bank {
 //                user.getValue().add(account);
 //            }
 //        }
-        Set<User> list = map.keySet();
-        List<User> a = list.stream().filter(p -> p.getPassport().
-                equals(passport)).collect(Collectors.toList());
-        if (!a.isEmpty()) {
-            User user = a.get(0);
-            map.get(user).add(account);
-        }
+//        Set<User> list = map.keySet();
+//        List<User> a = list.stream().filter(p -> p.getPassport().
+//                equals(passport)).collect(Collectors.toList());
+//        if (!a.isEmpty()) {
+//            User user = a.get(0);
+//            map.get(user).add(account);
+//        }
+        this.map.keySet()
+                .stream()
+                .filter(u ->u.getPassport().equals(passport))
+                .findFirst()
+                .ifPresent(v -> map.get(v).add(account));
     }
 
     /**
