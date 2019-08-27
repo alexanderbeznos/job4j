@@ -23,33 +23,29 @@ public class Logic {
         return result;
     }
 
+    private boolean isWinner(Predicate<Figure> function) {
+        return this.fillBy(function, 0, 0, 1, 0)
+                || this.fillBy(function, 0, 1, 1, 0)
+                || this.fillBy(function, 0, 2, 1, 0)
+                || this.fillBy(function, 0, 0, 0, 1)
+                || this.fillBy(function, 1, 0, 0, 1)
+                || this.fillBy(function, 2, 0, 0, 1)
+                || this.fillBy(function, 0, 0, 1, 1)
+                || this.fillBy(function, this.table.length - 1, 0, -1, 1);
+    }
+
     /**
      проверяет есть ли в поле выигрышные комбинации для Крестика.
      */
     public boolean isWinnerX() {
-        return this.fillBy(Figure::hasMarkX, 0, 0, 1, 0)
-                || this.fillBy(Figure::hasMarkX, 0, 1, 1, 0)
-                || this.fillBy(Figure::hasMarkX, 0, 2, 1, 0)
-                || this.fillBy(Figure::hasMarkX, 0, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkX, 1, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkX, 2, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkX, 0, 0, 1, 1)
-                || this.fillBy(Figure::hasMarkX, this.table.length - 1, 0, -1, 1);
+        return isWinner(Figure::hasMarkX);
     }
 
     /**
-     *
      проверяет есть ли в поле выигрышные комбинации для Нолика.
      */
     public boolean isWinnerO() {
-        return this.fillBy(Figure::hasMarkO, 0, 0, 1, 0)
-                || this.fillBy(Figure::hasMarkO, 0, 1, 1, 0)
-                || this.fillBy(Figure::hasMarkO, 0, 2, 1, 0)
-                || this.fillBy(Figure::hasMarkO, 0, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkO, 1, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkO, 2, 0, 0, 1)
-                || this.fillBy(Figure::hasMarkO, 0, 0, 1, 1)
-                || this.fillBy(Figure::hasMarkO, this.table.length - 1, 0, -1, 1);
+        return isWinner(Figure::hasMarkO);
     }
 
     /**
