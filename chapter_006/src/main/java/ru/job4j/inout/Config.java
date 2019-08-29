@@ -16,7 +16,7 @@ public class Config {
     public void load() {
         try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
             String line;
-            while((line = read.readLine()) != null) {
+            while ((line = read.readLine()) != null) {
                 String[] array = line.split("=");
                 values.put(array[0], array[1]);
             }
