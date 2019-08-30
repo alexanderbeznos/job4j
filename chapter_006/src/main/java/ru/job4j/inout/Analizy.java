@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Analizy {
     public void unavailable(String source, String target) {
+        List<String> listForWrite = new ArrayList<>();
         List<String> list = new ArrayList<>();
         try (BufferedReader read = new BufferedReader(new FileReader(source))) {
             String line;
@@ -20,27 +21,37 @@ public class Analizy {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try (FileWriter wr = new FileWriter(target)) {
-            String start = null;
-            String finish = null;
-            boolean bool = true;
-            for (var pair : list) {
-                String[] array = pair.split(" ");
-                if ((Integer.parseInt(array[0]) == 400 || (Integer.parseInt(array[0]) == 500)) && bool)   {
-                    start = array[1];
-                    bool = false;
-                }
-                if ((Integer.parseInt(array[0]) == 200 || (Integer.parseInt(array[0]) == 300)) && !bool) {
-                    finish = array[1];
-                    bool = true;
-                    wr.write(String.format("%s;%s%s", start, finish, System.lineSeparator()));
-                }
+        String start = null;
+        String finish = null;
+        boolean bool = true;
+        for (var pair : list) {
+            String[] array = pair.split(" ");
+            if ((Integer.parseInt(array[0]) == 400 || (Integer.parseInt(array[0]) == 500)) && bool)   {
+                start = array[1];
+                bool = false;
             }
+            if ((Integer.parseInt(array[0]) == 200 || (Integer.parseInt(array[0]) == 300)) && !bool) {
+                finish = array[1];
+                bool = true;
+                listForWrite.add(String.format("%s;%s%s", start, finish, System.lineSeparator()));
+            }
+        }
+        try {
+            writer(listForWrite, target);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-
+    /**
+     * Метод записывает в файл
+     */
+    public void writer(List<String> list, String target) throws IOException {
+        try (FileWriter wr = new FileWriter(target)) {
+            for (var o : list) {
+                wr.write(o);
+            }
+        }
     }
 //    public static void main(String[] args) {
 //        try (PrintWriter out = new PrintWriter(new FileOutputStream("unavailable.csv"))) {
