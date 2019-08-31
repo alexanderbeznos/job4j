@@ -24,15 +24,26 @@ public class Search {
                     } else {
                         String[] array = file.getName().split("\\.");
                         String s = String.format(".%s", array[1]);
-                        for (String in : exts) {
-                            if (s.equals(in)) {
-                                result.add(file);
-                            }
+                        if (prov(s, exts)) {
+                            result.add(file);
                         }
                     }
                 }
             }
         }
         return result;
+    }
+
+    /**
+     * Метод проверяет строку еа наличие в листе.
+     */
+    public boolean prov(String s, List<String> exts) {
+        boolean res = false;
+        for (String in : exts) {
+            if (s.equals(in)) {
+                res = true;
+            }
+        }
+        return res;
     }
 }
