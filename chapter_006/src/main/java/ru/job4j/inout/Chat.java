@@ -10,11 +10,15 @@ import java.util.List;
  * @since 28.08.2019.
  */
 public class Chat {
+    private static final String STOP = "стоп";
+    private static final String CONTINUE = "продолжить";
+    private static final String FIN = "закончить";
     private String write;
     private String answer;
 
     public static void main(String[] args) throws IOException {
-        new Chat("C:\\projects\\job4j\\Chat.txt", "C:\\projects\\job4j\\Answer.txt").chat();
+        //new Chat("C:\\projects\\job4j\\Chat.txt", "C:\\projects\\job4j\\Answer.txt").chat();
+        new Chat("./Chat.txt", "./Answer.txt").chat();
     }
 
     public Chat(String write, String answer) {
@@ -29,28 +33,29 @@ public class Chat {
         List<String> list = makeListAnswer();
         boolean work = false;
         boolean stopAns = false;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        FileWriter wr = new FileWriter(write);
-        while (!work) {
-            String s = reader.readLine();
-            wr.write(String.format("%s%s", s, System.lineSeparator()));
-            if ("стоп".equals(s) && !stopAns) {
-                stopAns = true;
-            } else if ("продолжить".equals(s)) {
-                stopAns = false;
-                String ans = list.get((int) (Math.random() * list.size()));
-                System.out.println(ans);
-                wr.write(String.format("%s%s", ans, System.lineSeparator()));
-            } else if ("закончить".equals(s)) {
-                work = true;
-            } else if (!stopAns) {
-                String ans = list.get((int) (Math.random() * list.size()));
-                System.out.println(ans);
-                wr.write(String.format("%s%s", ans, System.lineSeparator()));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+             FileWriter wr = new FileWriter(write)) {
+            while (!work) {
+                String s = reader.readLine();
+                wr.write(String.format("%s%s", s, System.lineSeparator()));
+                if (STOP.equals(s) && !stopAns) {
+                    stopAns = true;
+                } else if (CONTINUE.equals(s)) {
+                    stopAns = false;
+                    String ans = list.get((int) (Math.random() * list.size()));
+                    System.out.println(ans);
+                    wr.write(String.format("%s%s", ans, System.lineSeparator()));
+                } else if (FIN.equals(s)) {
+                    work = true;
+                } else if (!stopAns) {
+                    String ans = list.get((int) (Math.random() * list.size()));
+                    System.out.println(ans);
+                    wr.write(String.format("%s%s", ans, System.lineSeparator()));
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        reader.close();
-        wr.close();
     }
 
     /**
