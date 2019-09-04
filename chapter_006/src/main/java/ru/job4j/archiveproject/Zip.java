@@ -63,10 +63,8 @@ public class Zip {
 
     public static void main(String[] args) {
         Args array = new Args(args);
-        String directory = array.directory();
-        String excule = array.excule();
-        String output = array.output();
-        new Zip().pack(directory, excule, output);
+        String[] mas = array.find();
+        new Zip().pack(mas[0], mas[1], mas[2]);
     }
 }
 //-d c:\project\job4j\Args -e *.xml -o pom.zip

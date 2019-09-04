@@ -14,42 +14,20 @@ public class Args {
 
     /**
      * -d - directory - которую мы ходим архивировать
+     * -e - exclude - исключить файлы *.xml
+     * -o - output - во что мы архивируем.
      */
-    public String directory() {
-        String res = null;
+    public String[] find() {
+        String[] res = new String[3];
         for (int i = 0; i < args.length - 1; i++) {
             String chek = args[i];
             if ("-d".equals(chek)) {
-                res = args[i + 1];
-            }
-        }
-        return res;
-    }
-
-    /**
-     * -e - exclude - исключить файлы *.xml
-     */
-    public String excule() {
-        String result = null;
-        for (int i = 0; i < args.length - 1; i++) {
-            String chek = args[i];
-            if ("-e".equals(chek)) {
-                String res = args[i + 1];
-                result = res.replaceAll("\\*", "");
-            }
-        }
-        return result;
-    }
-
-    /**
-     * -o - output - во что мы архивируем.
-     */
-    public String output() {
-        String res = null;
-        for (int i = 0; i < args.length - 1; i++) {
-            String chek = args[i];
-            if ("-o".equals(chek)) {
-                res = args[i + 1];
+                res[0] = args[i + 1];
+            } else if ("-e".equals(chek)) {
+                String fo = args[i + 1];
+                res[1] = fo.replaceAll("\\*", "");
+            } else if ("-o".equals(chek)) {
+                res[2] = args[i + 1];
             }
         }
         return res;
