@@ -9,34 +9,30 @@ import java.util.*;
  */
 public class IteratorToArray implements Iterator {
     private final int[][] array;
-    private int size;
-    private int count = 1;
     private int firstIndex = 0;
     private int secondIndex = 0;
 
     public IteratorToArray(int[][] array) {
         this.array = array;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array[i].length; j++) {
-                size++;
-            }
-        }
     }
 
     @Override
     public boolean hasNext() {
-        return count <= size;
+        return firstIndex < array.length;
     }
 
     @Override
     public Object next() {
         int result = 0;
-        result = array[firstIndex][secondIndex];
+        try {
+            result = array[firstIndex][secondIndex];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            throw new NoSuchElementException();
+        }
         if (++secondIndex == array[firstIndex].length) {
             firstIndex++;
             secondIndex = 0;
         }
-        count++;
         return result;
     }
 }

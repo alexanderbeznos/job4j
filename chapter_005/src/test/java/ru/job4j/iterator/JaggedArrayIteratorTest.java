@@ -17,7 +17,7 @@ public class JaggedArrayIteratorTest {
     private Iterator<Integer> it;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         it = new IteratorToArray(new int[][] {{1}, {3, 4}, {7}});
     }
 
