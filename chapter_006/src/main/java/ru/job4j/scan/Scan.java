@@ -1,4 +1,4 @@
-package ru.job4j.Scan;
+package ru.job4j.scan;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class Scan {
     public static void main(String[] args) throws Exception {
         String[] array = research(args);
         Scan scan = new Scan();
-        List<String> list = scan.find(array);
+        List<String> list = scan.find(array[0], array[1], array[2]);
         scan.loud(list, array);
     }
 
@@ -30,7 +30,7 @@ public class Scan {
                 d = null;
             } else if ("-n".equals(chek)) {
                 String sel = args[i + 1];
-                if(sel.startsWith("*")) {
+                if (sel.startsWith("*")) {
                     sel = sel.replaceAll("\\*", "");
                 }
                 listFor[1] = sel;
@@ -41,7 +41,7 @@ public class Scan {
             } else if ("-f".equals(chek)) {
                 listFor[2] = "-f";
                 m = null;
-            }else if ("-r".equals(chek)) {
+            } else if ("-r".equals(chek)) {
                 listFor[2] = "-r";
                 m = null;
             } else if ("-o".equals(chek)) {
@@ -67,9 +67,9 @@ public class Scan {
     /**
      * Метод переберает все папки у файлы в заданной папке
      */
-    public List<String> find(String[] array) {
+    public List<String> find(String directory, String name, String make) {
         List<String> resul = new ArrayList<>();
-        File dir = new File(array[0]);
+        File dir = new File(directory);
         Queue<File> queue = new LinkedList<>();
         queue.add(dir);
         while (!queue.isEmpty()) {
@@ -79,12 +79,12 @@ public class Scan {
                 for (File file : list) {
                     if (file.isDirectory()) {
                         queue.add(file);
-                    } else if("-m".equals(array[2])) {
-                        if (provM(file, array[1])) {
+                    } else if ("-m".equals(make)) {
+                        if (provM(file, name)) {
                             resul.add(file.getAbsolutePath());
                         }
-                    } else if("-f".equals(array[2])) {
-                        if (provF(file, array[1])) {
+                    } else if ("-f".equals(make)) {
+                        if (provF(file, name)) {
                             resul.add(file.getAbsolutePath());
                         }
                     }
@@ -100,7 +100,7 @@ public class Scan {
     public boolean provF(File file, String tru) {
         boolean res = false;
         String s = file.getName();
-        if(s.startsWith(tru)) {
+        if (s.startsWith(tru)) {
             res = true;
         }
         return res;
@@ -112,7 +112,7 @@ public class Scan {
     public boolean provM(File file, String tru) {
         boolean res = false;
         String s = file.getName();
-        if(s.endsWith(tru)) {
+        if (s.endsWith(tru)) {
             res = true;
         }
         return res;
