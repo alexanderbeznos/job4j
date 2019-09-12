@@ -24,11 +24,11 @@ public class IteratorToArray implements Iterator {
     @Override
     public Object next() {
         int result = 0;
-        try {
-            result = array[firstIndex][secondIndex];
-        } catch (ArrayIndexOutOfBoundsException ex) {
+        result = array[firstIndex][secondIndex];
+        if(!hasNext()) {
             throw new NoSuchElementException();
         }
+
         if (++secondIndex == array[firstIndex].length) {
             firstIndex++;
             secondIndex = 0;
