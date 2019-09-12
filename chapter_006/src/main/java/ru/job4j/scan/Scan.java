@@ -11,7 +11,8 @@ public class Scan {
         Arg arg = new Arg(args);
         String[] array = arg.research();
         Scan scan = new Scan();
-        List<String> list = scan.find(array[0], array[1], array[2]);
+        Criteria criteria = new Criteria(array);
+        List<String> list = scan.find(criteria.directory(), criteria.name(), criteria.make());
         scan.loud(list, array);
     }
 
