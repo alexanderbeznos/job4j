@@ -1,6 +1,7 @@
 package ru.job4j.generic;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
@@ -23,16 +24,16 @@ public class SimpleArray<T> implements Iterator {
     }
 
     public void set(int index, T model) {
-        this.objects[index] = model;
+        if (objects.length > index) {
+            objects[index] = model;
+        }
     }
 
     public void remove(int ind) {
-        int a = ind;
-        for (int i = ind; i < objects.length - 1; i++) {
-            objects[i] = objects[i + 1];
-            a++;
+        if(objects.length > ind) {
+            System.arraycopy(objects, ind + 1, objects, ind, objects.length - 1 - ind);
+            this.index--;
         }
-        objects[a] = null;
     }
 
     public T get(int ind) {
@@ -44,7 +45,10 @@ public class SimpleArray<T> implements Iterator {
 
     @Override
     public boolean hasNext() {
-        return objects.length > index;
+        if (objects.length <= index) {
+            throw new NoSuchElementException();
+        }
+        return true;
     }
 
     @Override
