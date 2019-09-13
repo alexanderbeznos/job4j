@@ -25,7 +25,7 @@ public class IteratorToArray implements Iterator {
     public Object next() {
         int result = 0;
         result = array[firstIndex][secondIndex];
-        if(!hasNext()) {
+        if (!hasNext()) {
             throw new NoSuchElementException();
         }
 
