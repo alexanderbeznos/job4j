@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
  * @version 1.0
- * @since 29.08.2019.
+ * @since 13.09.2019.
  */
 public class SimpleArray<T> implements Iterator {
     private Object[] objects;
@@ -30,7 +30,7 @@ public class SimpleArray<T> implements Iterator {
     }
 
     public void remove(int ind) {
-        if(objects.length > ind) {
+        if (objects.length > ind) {
             System.arraycopy(objects, ind + 1, objects, ind, objects.length - 1 - ind);
             this.index--;
         }
@@ -56,4 +56,7 @@ public class SimpleArray<T> implements Iterator {
         return (T) objects[index++];
     }
 
+    public int siz() {
+        return objects.length;
+    }
 }
