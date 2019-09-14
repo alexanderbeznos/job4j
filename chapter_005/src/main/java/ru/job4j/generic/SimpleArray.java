@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * @version 1.0
  * @since 13.09.2019.
  */
-public class SimpleArray<T> implements Iterator {
+public class SimpleArray<T> implements Iterable<T> {
     private Object[] objects;
     int index = 0;
 
@@ -43,20 +43,29 @@ public class SimpleArray<T> implements Iterator {
         return (T) objects[ind];
     }
 
-    @Override
-    public boolean hasNext() {
-        if (objects.length <= index) {
-            throw new NoSuchElementException();
-        }
-        return true;
-    }
-
-    @Override
-    public Object next() {
-        return (T) objects[index++];
-    }
-
     public int siz() {
         return objects.length;
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int position;
+
+            @Override
+            public boolean hasNext() {
+                return index >= position;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return get(position++);
+            }
+        };
+    }
+
+
 }
