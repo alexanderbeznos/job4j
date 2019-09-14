@@ -43,6 +43,7 @@ public class DinCont<E> implements Iterable<E> {
         return new Iterator<>() {
             private int expectedModCount = modCount;
             private int count;
+            private Node<E> last = first;
 
             @Override
             public boolean hasNext() {
@@ -57,10 +58,13 @@ public class DinCont<E> implements Iterable<E> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                Node<E> result = first;
-                for (int i = 0; i < count; i++) {
-                    result = result.next;
+
+                if (count == 0) {
+                    count++;
+                    return first.value;
                 }
+                Node<E> result = last.next;
+                last = result;
                 count++;
                 return result.value;
             }
