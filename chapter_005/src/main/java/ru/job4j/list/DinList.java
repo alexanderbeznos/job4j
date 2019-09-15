@@ -8,22 +8,24 @@ import java.util.*;
  * @since 14.09.2019.
  */
 public class DinList<E> implements Iterable<E> {
-    Object[] container;
-    int modCount = 0;
+    private Object[] container;
+    private int modCount = 0;
+    private int size = 0;
 
     public DinList() {
         this.container = new Object[10];
     }
 
     public int size() {
-        return modCount;
+        return size;
     }
 
     public void add(E value) {
         if (this.container.length == this.modCount) {
             containerIncrease();
         }
-        this.container[modCount++] = value;
+        modCount++;
+        this.container[size++] = value;
     }
 
     public void containerIncrease() {
@@ -32,7 +34,7 @@ public class DinList<E> implements Iterable<E> {
 
     public E get(int index) {
         E result = null;
-        if (this.modCount >= index) {
+        if (this.size >= index) {
             result = (E) this.container[index];
         }
         return result;
