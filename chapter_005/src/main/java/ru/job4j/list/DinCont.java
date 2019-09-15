@@ -38,6 +38,11 @@ public class DinCont<E> implements Iterable<E> {
         return result.value;
     }
 
+    public void delete() {
+        first = first.next;
+        this.modCount--;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
