@@ -2,7 +2,6 @@ package ru.job4j.list;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -11,8 +10,8 @@ import static org.junit.Assert.assertThat;
  * @version 1.0
  * @since 15.09.2019.
  */
-public class SimpleStackTest {
-    SimpleStack list = new SimpleStack<>();
+public class SimpleQueueTest {
+    SimpleQueue list = new SimpleQueue<>();
     @Before
     public void before() {
         list.push(1);
@@ -22,8 +21,8 @@ public class SimpleStackTest {
 
     @Test
     public void whenPull() {
-        assertThat(list.poll(), is(3));
-        assertThat(list.poll(), is(2));
         assertThat(list.poll(), is(1));
+        assertThat(list.poll(), is(2));
+        assertThat(list.poll(), is(3));
     }
 }

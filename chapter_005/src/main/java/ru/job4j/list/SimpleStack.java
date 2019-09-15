@@ -19,4 +19,8 @@ public class SimpleStack<T> {
     public void push(T value) {
        dinCont.add(value);
     }
+
+    public int getSize() {
+        return dinCont.getModCount();
+    }
 }

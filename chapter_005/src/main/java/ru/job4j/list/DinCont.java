@@ -43,6 +43,10 @@ public class DinCont<E> implements Iterable<E> {
         this.modCount--;
     }
 
+    public int getModCount() {
+        return modCount;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
