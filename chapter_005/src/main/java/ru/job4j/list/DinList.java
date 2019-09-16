@@ -48,7 +48,7 @@ public class DinList<E> implements Iterable<E> {
 
             @Override
             public boolean hasNext() {
-                return modCount > this.count;
+                return size > this.count;
             }
 
             @Override
