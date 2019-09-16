@@ -1,9 +1,6 @@
 package ru.job4j.map;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Alexander Beznos (ast1bn@mail.ru).
@@ -31,6 +28,11 @@ public class User {
 
     public Calendar getBirthday() {
         return birthday;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
     }
 
     public static void main(String[] args) {
