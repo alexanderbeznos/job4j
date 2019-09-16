@@ -11,9 +11,7 @@ public class SimpleStack<T> {
     private DinCont dinCont = new DinCont();
 
     public T poll() {
-        T result = (T) dinCont.get(0);
-        dinCont.delete();
-        return result;
+        return (T) dinCont.delete();
     }
 
     public void push(T value) {

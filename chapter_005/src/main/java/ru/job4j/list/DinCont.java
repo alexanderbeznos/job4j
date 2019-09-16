@@ -38,9 +38,11 @@ public class DinCont<E> implements Iterable<E> {
         return result.value;
     }
 
-    public void delete() {
+    public E delete() {
+        Node<E> result = first;
         first = first.next;
         this.modCount--;
+        return result.value;
     }
 
     public int getModCount() {
