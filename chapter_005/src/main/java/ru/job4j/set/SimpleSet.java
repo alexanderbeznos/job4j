@@ -3,6 +3,7 @@ package ru.job4j.set;
 import ru.job4j.list.DinList;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class SimpleSet<E> implements Iterable<E> {
     private DinList dinList = new DinList();
@@ -16,16 +17,9 @@ public class SimpleSet<E> implements Iterable<E> {
     public boolean contains(E e) {
         boolean result = false;
         for (int i = 0; i < dinList.size(); i++) {
-            if (e == null) {
-                if (dinList.get(i) == e) {
-                    result = true;
-                    break;
-                }
-            } else {
-                if (e.equals(dinList.get(i))) {
-                    result = true;
-                    break;
-                }
+            if (Objects.equals(dinList.get(i), e)) {
+                result = true;
+                break;
             }
         }
         return result;
