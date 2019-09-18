@@ -81,9 +81,9 @@ public class MyHashMap<K, V> implements Iterable{
     }
 
     public void increase() {
-        Node<K, V>[] old = container;
-        container = new Node[old.length * 2];
-        System.arraycopy(old, 0, container, 0, old.length - 1);
+        Node<K, V>[] a = new Node[container.length * 2];
+        System.arraycopy(container, 0, a, 0, container.length - 1);
+        container = a;
     }
 
     public int getSize() {
@@ -122,6 +122,7 @@ public class MyHashMap<K, V> implements Iterable{
 
             @Override
             public K next() {
+                K result = null;
 
                 if (expectedModCount != size) {
                     throw new ConcurrentModificationException();
@@ -133,10 +134,10 @@ public class MyHashMap<K, V> implements Iterable{
                     if (container[i] != null) {
                         count++;
                         current = i + 1;
-                        return container[i].getKey();
+                        result = container[i].getKey();
                     }
                 }
-                return null;
+                return result;
             }
         };
     }
