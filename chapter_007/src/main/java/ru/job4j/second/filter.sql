@@ -4,7 +4,7 @@
 2.select * from product as u
   where u.name like '%Мороженое%';
 3.select * from product as u
-  where u.expired_date > '2019-09-01 00:00:00';
+  where extract (month from u.expired_date) = extract (month from now()) + 1;
 4.select * from product as u
   where u.price = (select MAX(price) from product);
 5.select * from product as i
