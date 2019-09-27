@@ -7,7 +7,7 @@ import java.util.*;
  * @version 1.2.
  * @since 27.05.2019.
  */
-public class Tracker {
+public class Tracker implements ITracker {
     private final List<Item> items = new ArrayList<>();
 
     private static final Random RN = new Random();
