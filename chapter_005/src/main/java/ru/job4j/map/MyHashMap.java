@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * @version 1.0
  * @since 17.09.2019.
  */
-public class MyHashMap<K, V> implements Iterable{
+public class MyHashMap<K, V> implements Iterable {
     private Node<K, V>[] container;
     private int size = 0;
     private int modCount = 0;

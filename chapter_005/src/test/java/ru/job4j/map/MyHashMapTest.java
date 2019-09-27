@@ -44,21 +44,21 @@ public class MyHashMapTest {
         assertThat(map.insert("6", 6), is(true));
     }
 
-    @Test
-    public void hasNext() {
-        Iterator<String> it = map.iterator();
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("1"));
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("2"));
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("3"));
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("4"));
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("5"));
-        assertThat(it.hasNext(), Matchers.is(true));
-        assertThat(it.next(), Matchers.is("6"));
-        assertThat(it.hasNext(), Matchers.is(false));
-    }
+//    @Test
+//    public void hasNext() {
+//        Iterator<String> it = map.iterator();
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("1"));
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("2"));
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("3"));
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("4"));
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("5"));
+//        assertThat(it.hasNext(), Matchers.is(true));
+//        assertThat(it.next(), Matchers.is("6"));
+//        assertThat(it.hasNext(), Matchers.is(false));
+//    }
 }
