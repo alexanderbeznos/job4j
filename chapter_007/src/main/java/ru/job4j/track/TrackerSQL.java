@@ -18,6 +18,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     private Connection connection;
 
        public boolean init() {
+
         try (InputStream in = TrackerSQL.class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
             config.load(in);
@@ -27,6 +28,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
                     config.getProperty("username"),
                     config.getProperty("password")
             );
+            createTable();
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
