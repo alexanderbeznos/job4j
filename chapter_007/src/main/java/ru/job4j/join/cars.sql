@@ -49,3 +49,6 @@ join body as t on g.car_id = t.id where g.id is null;
 
 select g.name, t.name from cars as g right outer
 join engine as t on g.engine_id = t.id where g.id is null;
+
+select g.name, t.name from cars as g right outer
+join transmission as t on g.transmission_id = t.id where g.id is null;
