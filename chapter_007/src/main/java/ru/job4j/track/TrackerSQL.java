@@ -1,8 +1,7 @@
 package ru.job4j.track;
 
 import org.apache.logging.log4j.LogManager;
-import ru.job4j.tracker.ITracker;
-import ru.job4j.tracker.Item;
+import ru.job4j.tracker.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +15,10 @@ import java.util.Properties;
 
 public class TrackerSQL implements ITracker, AutoCloseable {
     private Connection connection;
+
+    public TrackerSQL(Connection connection) {
+        this.connection = connection;
+    }
 
        public boolean init() {
 
@@ -38,17 +41,17 @@ public class TrackerSQL implements ITracker, AutoCloseable {
     /**
      * Создает таблицу items, если она еще не создана.
      */
-    private void createTable() throws Exception{
+    private void createTable() throws Exception {
         Statement st = connection.createStatement();
-        st.execute("create table if not exists items(" +
-                "id serial primary key," +
-                "name varchar(100)," +
-                "description varchar(200)," +
-                "time_of_creation bigint);");
+        st.execute("create table if not exists items("
+                + "id serial primary key,"
+                + "name varchar(100),"
+                + "description varchar(200),"
+                + "time_of_creation bigint);");
     }
 
     public Item add(Item item) {
-        try(PreparedStatement st = connection.prepareStatement(
+        try (PreparedStatement st = connection.prepareStatement(
                 "insert into items (name, description, time_of_creation) values (?, ?, ?);"
         )) {
             st.setString(1, item.getName());
@@ -56,7 +59,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             st.setLong(3, item.getTime());
             st.executeUpdate();
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return item;
@@ -64,7 +67,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
     public boolean replace(String id, Item item) {
         boolean result = false;
-        try(PreparedStatement st = connection.prepareStatement(
+        try (PreparedStatement st = connection.prepareStatement(
                 "update items set name = ?, description = ?, time_of_creation = ? where id = ?;"
         )) {
             st.setString(1, item.getName());
@@ -73,7 +76,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             st.setInt(4, Integer.parseInt(id));
             st.executeUpdate();
             result = true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -81,19 +84,19 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
     public Item findById(String id) {
         Item result = null;
-        try(PreparedStatement st = connection.prepareStatement(
+        try (PreparedStatement st = connection.prepareStatement(
                 "select * from items where id = ?;"
         )) {
             st.setInt(1, Integer.parseInt(id));
             ResultSet rs = st.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 String name = rs.getString("name");
                 String desc = rs.getString("description");
                 long time = rs.getLong("time_of_creation");
                 result = new Item(name, desc, time);
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -101,13 +104,13 @@ public class TrackerSQL implements ITracker, AutoCloseable {
 
     public boolean delete(String id) {
         boolean result = false;
-        try(PreparedStatement st = connection.prepareStatement(
+        try (PreparedStatement st = connection.prepareStatement(
                 "delete from items where id = ?;"
         )) {
             st.setInt(1, Integer.parseInt(id));
             st.executeUpdate();
             result = true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -119,7 +122,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
             ResultSet rs = st.executeQuery(
                     "select * from items;"
             );
-            while(rs.next()) {
+            while (rs.next()) {
                 String name = rs.getString("name");
                 String desc = rs.getString("description");
                 long time = rs.getLong("time_of_creation");
@@ -139,7 +142,7 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         )) {
             st.setString(1, key);
             ResultSet rs = st.executeQuery();
-            while(rs.next()) {
+            while (rs.next()) {
                 String name = rs.getString("name");
                 String desc = rs.getString("description");
                 long time = rs.getLong("time_of_creation");
@@ -160,10 +163,5 @@ public class TrackerSQL implements ITracker, AutoCloseable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        TrackerSQL testTracker = new TrackerSQL();
-        testTracker.init();
     }
 }
